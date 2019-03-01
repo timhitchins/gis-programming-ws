@@ -1,0 +1,331 @@
+DEMO1: VARIABLE TYPING
+**********************
+>>> whatever = "string"
+>>> type(whatever)
+<type 'str'>
+>>> whatever = 1
+>>> type(whatever)
+<type 'int'>
+>>> whatever = 1.0
+>>> type(var)
+<type 'float'>
+
+--------------------------------------------------------------------------
+DEMO2: LOGICAL OPERATORS, BOOLEAN EXPRESSIONS, ASSIGNMENTS, AND USER INPUT
+**************************************************************************
+>>> # comparison for equality
+>>> 5 == 5
+True
+>>> 5 > 0
+True
+>>> 5 < -10
+False
+>>> s1 = ""
+>>> s2 = " "
+>>> s1 != s2
+True
+>>> x = 5
+>>> x > 0 and x < 10
+True
+>>> 0 < x < 10
+True
+>>> True + False + 10
+11
+>>> False == 0
+True
+>>> False == 1
+False
+>>> "alpha" > "beta"
+False
+-----------------------------------------------------------
+>>> # assignment
+>>> x = 1
+>>> x
+1
+>>> a,b,c = 1,2,3
+>>> a
+1
+>>> b
+2
+>>> c
+3
+-----------------------------------------------------------
+>>> # switching values
+>>> x = 2
+>>> y = 3
+>>> x,y = y,x
+>>> x
+3
+>>> y
+2
+-----------------------------------------------------------
+>>> # augmented assignment
+>>> x = 0
+>>> x = x + 1
+>>> x
+1
+>>> x = 0
+>>> x +=1
+>>> x
+1
+>>> x*=2
+>>> x
+2
+-----------------------------------------------------------
+>>> # getting input from the user
+>>> x = input("enter number or letter ")
+enter number or letter 12
+>>> x
+12
+>>> type(x)
+<type 'int'>
+>>> x = input("enter number or letter ")
+enter number or letter a
+
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in -toplevel-
+    x = input("enter number or letter ")
+  File "<string>", line 0, in -toplevel-
+NameError: name 'a' is not defined
+>>> x = raw_input("enter number or letter ")
+enter number or letter a
+>>> x
+'a'
+>>> type(x)
+<type 'str'>
+>>> x = raw_input("enter number or letter ")
+enter number or letter 1
+>>> x
+'1'
+>>> type(x)
+<type 'str'>
+>>> # raw_input returns a string
+
+DEMO3: CONDITIONAL STATEMENTS
+*****************************
+>>> if x < 0:
+	print "x is negative"
+elif x == 0:
+	print "x is zero"
+else:
+	print "x is positive"
+
+	
+x is positive
+
+DEMO4: LOOPING
+**************
+>>> # while loop
+>>> x = 0
+>>> while x < 5:
+	print "python"
+	x +=1
+
+	
+python
+python
+python
+python
+python
+-----------------------------------------------------------
+>>> # counted loop
+>>> n = range(10)
+>>> for i in n:
+	print i, "python"
+
+	
+0 python
+1 python
+2 python
+3 python
+4 python
+5 python
+6 python
+7 python
+8 python
+9 python
+-----------------------------------------------------------
+>>> # list loop
+>>> l = [2,4,6]
+>>> for i in l:
+	print i, "times Python"
+
+	
+2 times Python
+4 times Python
+6 times Python
+-----------------------------------------------------------
+>>> # breaking out of loops
+>>> # find the maximum number below 1000 that divides by 12
+>>> for n in range(1000, 0, -1):
+	div = n % 12
+	if div == 0:
+		print n
+		break
+
+	
+996
+>>> # why use break above?
+-----------------------------------------------------------
+>>> # break if input is "false"
+>>> while True:
+	number = raw_input("Non-zero Number: ")
+	number = float(number)
+	if not number: break
+	print "Your number", number
+
+	
+Non-zero Number: 1
+Your number 1.0
+Non-zero Number: 5
+Your number 5.0
+Non-zero Number: -1
+Your number -1.0
+Non-zero Number: 0
+-----------------------------------------------------------
+>>> # breaking if succeded
+>>> for n in range(10):
+	if n >= 10:
+		print "OK"
+		break
+else:
+	print "in range"
+
+	
+in range
+in range
+in range
+in range
+in range
+in range
+in range
+in range
+in range
+in range
+>>> for n in range(10):
+	if n < 10:
+		print "OK"
+		break
+else:
+	print "out of range"
+
+OK
+>>> # no "break" would give:
+>>> for n in range(10):
+	if n < 10:
+		print "OK"
+	
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+>>> 
+
+-----------------------------------------------------------
+DEMO5: EVERYTHING IS AN OBJECT
+******************************
+
+>>> strg ="A String of Words"
+>>> id(strg)
+1075848016
+>>> type(strg)
+<type ’str’>
+>>> strg
+’A String of Words’
+-----------------------------------------------------------
+>>> # identity
+>>> x = y = [1,2,3]
+>>> x is y
+True
+>>> y is x
+True
+>>> z = [1,2,3]
+>>> z is x
+False
+>>> z == x
+True
+-----------------------------------------------------------
+
+DEMO6: NUMBERS
+**************
+>>> iNum = 7
+>>> type(iNum)
+<type 'int'>
+>>> fNum = 7.0
+>>> type(fNum)
+<type 'float'>
+>>> iNum == fNum
+1
+>>> fNum = 7.000001
+>>> iNum == fNum
+0
+>>> fNum < iNum
+0
+>>> fNum > iNum
+1
+>>> int(fNum) == iNum
+1
+>>> float(iNum)
+7.0
+>>> float(iNum) == fNum
+0
+>>> fNum / 2
+3.5000005000000001
+>>> iNum / 2
+3
+>>> iNum / 2.
+3.5
+>>> divmod(iNum, 2)
+(3, 1)
+>>> round(fNum / 2) # rounds to the nearest int
+4.0
+>>> # if you always want to round down:
+>>> from math import floor
+>>> floor(40.9)
+40.0
+>>> # the same can be done with:
+>>> int(40.9)
+40
+>>> 3**2
+9
+>>> 4**0.5
+2.0
+>>> 1 + 2
+3
+>>> 1 + 2 +
+SyntaxError: invalid syntax
+>>> 1 + 2 + \
+  3
+6
+-------------------------------------------------------
+>>> # other goodies
+>>> 1/2
+0
+>>> # int / int -> int
+>>> # and rounds down
+>>> # to make it more "natural":
+>>> from __future__ import division
+>>> 1/2
+0.5
+>>> # to get int / int -> int:
+>>> 1//2
+0
+>>> # also with '//' we get float/float -> int:
+>>> 1.0//2.0
+0.0
+>>> 017
+15
+>>> # with zero leading we switch to hexadecimals or octals
+>>> # Python handles large numbers
+>>> 111111111111111111111
+111111111111111111111L
+
+
+******************************
+ATTRIBUTION: demos provide by Martin Swobodzinski
