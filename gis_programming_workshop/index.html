@@ -1,449 +1,663 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GIS Programming Workshop</title>
 
-  <title>GIS Programming Workshop</title>
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/white.css" />
 
-  <link rel="stylesheet" href="css/reveal.css">
-  <link rel="stylesheet" href="css/theme/white.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
 
-  <!-- Theme used for syntax highlighting of code -->
-  <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
 
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-    document.getElementsByTagName('head')[0].appendChild(link);
-  </script>
+    <style>
+      .line-in-middle {
+        width: 400px;
+        height: 200px;
+        background: linear-gradient(
+          to right,
+          transparent 0%,
+          transparent calc(50% - 0.81px),
+          black calc(50% - 0.8px),
+          black calc(50% + 0.8px),
+          transparent calc(50% + 0.81px),
+          transparent 100%
+        );
+      }
+    </style>
+  </head>
 
-  <style>
-    .line-in-middle {
-      width: 400px;
-      height: 200px;
-      background: linear-gradient(to right,
-      transparent 0%,
-      transparent calc(50% - 0.81px),
-      black calc(50% - 0.8px),
-      black calc(50% + 0.8px),
-      transparent calc(50% + 0.81px),
-      transparent 100%);
-    }
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <div style="font-size: 2em; text-shadow: 0 2px 0 #ccc;">
+            An Introduction to GIS Programming:
+          </div>
+          <div style="font-size: 1em;">
+            <i>Tips on What You Need to Know & How to Get Started</i>
+          </div>
+          <img
+            src="./assets/img/hitchins-transparent-logo.png"
+            style="height: 100px; width: 100px; background:none; border:none; box-shadow:none; "
+          />
+          <div style="margin-top: 20px">
+            Tim Hitchins | PCC <br />
+            February 28, 2020
+          </div>
+        </section>
 
-  </style>
+        <section class="stretch">
+          <h3>Review: 6 Functions of a GIS</h3>
+          <ul>
+            <li class="fragment">Capture</li>
+            <li class="fragment">Store</li>
+            <li class="fragment">Query</li>
+            <li class="fragment">Analyze</li>
+            <li class="fragment">Display</li>
+            <li class="fragment">Produce Output</li>
+          </ul>
+        </section>
 
-</head>
-
-<body>
-  <div class="reveal">
-    <div class="slides">
-      <section>
-        <div style="font-size: 2em; text-shadow: 0 2px 0 #ccc;">
-          An Introduction to GIS Programming:
-        </div>
-        <div style="font-size: 1em;"><i>Tips on What You Need to Know & How to Get Started</i></div>
-        <img src="./assets/img/hitchins-transparent-logo.png" style="height: 100px; width: 100px; background:none; border:none; box-shadow:none; "/>
-        <div style="margin-top: 20px">
-          <!-- <div style="display:inline-block; height: 50px; width: 50px;"> -->
-          <!-- <img src="./assets/img/hitchins-transparent-logo.png" style="height: 50px; width: 50px; background:none; border:none; box-shadow:none; "/> -->
-          
-          Tim Hitchins | PCC <br>
-          February 28, 2020
-        </div>
-
-      </section>
-
-      <section class="stretch">
-        <h3>Review: 6 Functions of a GIS</h3>
-        <ul>
-          <li class="fragment">Capture</li>
-          <li class="fragment">Store</li>
-          <li class="fragment">Query</li>
-          <li class="fragment">Analyze</li>
-          <li class="fragment">Display</li>
-          <li class="fragment">Produce Output</li>
-        </ul>
-      </section>
-
-      <section>
-      <h3>Getting a Job in the Modern GIS Landscape</h3>
-      <div>
-        <a href="https://www.governmentjobs.com/careers/trimet/jobs/2321225/analyst-gis-data" target="_blank">
-          <img src="./assets/img/trimet.png" style="background:none; border:none; box-shadow:none;">
-        </a>
-        <a href="https://www.governmentjobs.com/careers/oregonmetro/jobs/2350387/geospatial-development-lead" target="_blank">
-          <img src="./assets/img/metro.png" style="background:none; border:none; box-shadow:none;">
-        </a>
-      </div>
-
-      </section>
-
-      <section>
-        <div >
-          <h3>There is a dizzying array of programming language choices</h3>
-          <img src="https://www.e-education.psu.edu/geog583/sites/www.e-education.psu.edu.geog583/files/code2.png" style="height: 450px; width:450px; background:none; border:none; box-shadow:none;">
-          <br>
-          <small>Image credit: F. Hardisty / Penn State University</small>
-        </div>
-      </section>
-
-      <section>
-          <div >
-            <h3>What languages are used in GIS?</h3>
-            <a href="https://gogeomatics.ca/what-are-the-top-programming-languages-in-the-gis-world/" target="_blank">
-              <img src="https://www.gogeomatics.ca/wp-content/uploads/Selection_002.png" style="background:none; border:none; box-shadow:none;">
+        <section>
+          <h3>Getting a Job in the Modern GIS Landscape</h3>
+          <div>
+            <a
+              href="https://www.governmentjobs.com/careers/trimet/jobs/2321225/analyst-gis-data"
+              target="_blank"
+            >
+              <img
+                src="./assets/img/trimet.png"
+                style="background:none; border:none; box-shadow:none;"
+              />
             </a>
-            <br>
+            <a
+              href="https://www.governmentjobs.com/careers/oregonmetro/jobs/2350387/geospatial-development-lead"
+              target="_blank"
+            >
+              <img
+                src="./assets/img/metro.png"
+                style="background:none; border:none; box-shadow:none;"
+              />
+            </a>
+          </div>
+        </section>
+
+        <section>
+          <div>
+            <h3>There is a dizzying array of programming language choices</h3>
+            <img
+              src="https://www.e-education.psu.edu/geog583/sites/www.e-education.psu.edu.geog583/files/code2.png"
+              style="height: 450px; width:450px; background:none; border:none; box-shadow:none;"
+            />
+            <br />
+            <small>Image credit: F. Hardisty / Penn State University</small>
+          </div>
+        </section>
+
+        <section>
+          <div>
+            <h3>What languages are used in GIS?</h3>
+            <a
+              href="https://gogeomatics.ca/what-are-the-top-programming-languages-in-the-gis-world/"
+              target="_blank"
+            >
+              <img
+                src="https://www.gogeomatics.ca/wp-content/uploads/Selection_002.png"
+                style="background:none; border:none; box-shadow:none;"
+              />
+            </a>
+            <br />
             <small>Image credit: www.tiobe.com</small>
           </div>
         </section>
 
         <section>
-          <div >
+          <div>
             <h3>Common programming languages used with GIS overview</h3>
-            <a href="https://www.e-education.psu.edu/geog583/node/67" target="_blank">
-              <img src="./assets/img/common-languages-overview.png" style="background:none; border:none; box-shadow:none;">
+            <a
+              href="https://www.e-education.psu.edu/geog583/node/67"
+              target="_blank"
+            >
+              <img
+                src="./assets/img/common-languages-overview.png"
+                style="background:none; border:none; box-shadow:none;"
+              />
             </a>
-            <br>
+            <br />
             <small>Image credit: Penn State Dept. of Geography</small>
           </div>
         </section>
 
         <section>
-            <div >
-              <h3>Who are developers and what do they use?</h3>
-              <a href="https://insights.stackoverflow.com/survey/2019" target="_blank">
-                <img src="./assets/img/dev-survey-2019.png" 
-              style="background:none; border:none; box-shadow:none;" />
+          <div>
+            <h3>Who are developers and what do they use?</h3>
+            <a
+              href="https://insights.stackoverflow.com/survey/2019"
+              target="_blank"
+            >
+              <img
+                src="./assets/img/dev-survey-2019.png"
+                style="background:none; border:none; box-shadow:none;"
+              />
             </a>
+          </div>
+        </section>
+
+        <section>
+          <div>
+            <h3>Follow the GIS Programming Roadmap</h3>
+            <a
+              href="https://github.com/petedannemann/GIS-Programming-Roadmap/blob/master/README.md"
+              target="_blank"
+            >
+              <img
+                src="https://camo.githubusercontent.com/c10dee1560c19b4036858151aba6f8819db2f451/68747470733a2f2f67697367656f6772617068792e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031362f30332f6769732d70726f6772616d6d696e672d696e2d707974686f6e2d363738783332322e706e67"
+                style="background:none; border:none; box-shadow:none;"
+              />
+            </a>
+          </div>
+        </section>
+        <section>
+          <section>
+            <h1>GIS Programming with Python</h1>
+            <a href="https://www.python.org/" target="_blank">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png"
+                style="height: 350px; width:350px; background:none; border:none; box-shadow:none;"
+              />
+            </a>
+          </section>
+          <section>
+            <h1>GIS <i>Programming?</i></h1>
+            <p>
+              Learn how to write <strong>scripts</strong> to perform GIS
+              analyses and automate repetetive tasks with Python.
+            </p>
+          </section>
+
+          <section class="stretch">
+            <h3>Programming vs Scripting Languages</h3>
+            <hr />
+            <p>
+              <strong>Programming Language:</strong> Is compiled to machine code
+              and run on the hardware of the underlying Operating System.
+              Examples: C, C++, Java
+            </p>
+            <p>
+              <strong>Scripting Language:</strong> Is unstructured subset of
+              programming language. It is generally interpreted. it basically
+              "scripts" other things to do stuff. The primary focus isn't
+              primarily building your own apps but getting an existing app to
+              act the way you want Examples: JS, Python, R
+            </p>
+          </section>
+          <section class="stretch">
+            <h3>Why Start with Python?</h3>
+            <ul>
+              <li class="fragment">
+                Ease of use: scripting language, interpreted, high-level
+              </li>
+              <li class="fragment">Open-source, object-oriented</li>
+              <li class="fragment">
+                Modular, scalable, portable; comes with development tools
+              </li>
+              <li class="fragment">
+                On-the-fly testing (Interactive Window); rapid prototyping
+              </li>
+              <li class="fragment">
+                Easily ‘glues’ with other languages; installed with ArcGIS 10.x
+                / ArcPro
+              </li>
+              <li class="fragment">
+                Large collaborative community (numeric and scientific
+                extensions)
+              </li>
+            </ul>
+          </section>
+
+          <section class="stretch">
+            <h3>Writing Python Code</h3>
+            <p>
+              There are countless
+              <strong>Interactive Development Environments (IDE)</strong> you
+              can use to interpret your code. Everybody has their own
+              preferences depending on the task as hand.
+            </p>
+
+            <div>
+              <img
+                src="https://i.stack.imgur.com/bz1qE.jpg"
+                style="height: 10%; background:none; border:none; box-shadow:none;"
+              />
             </div>
           </section>
-
-      <section>
-          <div >
-            <h3>Follow the GIS Programming Roadmap</h3>
-            <a href="https://github.com/petedannemann/GIS-Programming-Roadmap/blob/master/README.md" target="_blank">
-              <img src="https://camo.githubusercontent.com/c10dee1560c19b4036858151aba6f8819db2f451/68747470733a2f2f67697367656f6772617068792e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031362f30332f6769732d70726f6772616d6d696e672d696e2d707974686f6e2d363738783332322e706e67" style="background:none; border:none; box-shadow:none;">
-            </a>
-          </div>
-        </section>
-      <section>
-        <section>
-          <h1>GIS Programming with Python</h1>
-          <a href="https://www.python.org/" target="_blank"> 
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png" style="height: 350px; width:350px; background:none; border:none; box-shadow:none;">
-        </a>
-        </section>
-        <section>
-            <h1>GIS <i>Programming?</i></h1>
-            <p>Learn how to write <strong>scripts</strong> to perform GIS analyses and automate repetetive tasks with Python.</p>
-        </section>
-
-        <section class="stretch">
-            <h3>Programming vs Scripting Languages</h3>
-            <hr>
-            <p> <strong>Programming Language:</strong> Is compiled to machine code and run on the hardware of the underlying Operating System.  Examples: C, C++, Java</p>
-            <p><strong>Scripting Language:</strong > Is unstructured subset of programming language. It is generally interpreted. it basically "scripts" 
-              other things to do stuff. The primary focus isn't primarily building your own apps but getting an existing app to act the way you want
-            Examples: JS, Python, R</p>
-          </section>
-        <section class="stretch">
-          <h3>Why Start with Python?</h3>
-          <ul>
-            <li class="fragment">Ease of use: scripting language, interpreted, high-level</li>
-            <li class="fragment">Open-source, object-oriented</li>
-            <li class="fragment">Modular, scalable, portable; comes with development tools</li>
-            <li class="fragment">On-the-fly testing (Interactive Window); rapid prototyping</li>
-            <li class="fragment">Easily ‘glues’ with other languages; installed with ArcGIS 10.x / ArcPro</li>
-            <li class="fragment">Large collaborative community (numeric and scientific extensions)</li>
-          </ul>
-        </section>
-
-        <section class="stretch">
-          <h3>Writing Python Code</h3>
-          <p>There are countless <strong>Interactive Development Environments (IDE)</strong> you can use to interpret your code.  
-            Everybody has their own preferences depending on the task as hand.</p>
-          <!-- <ul>
-            <li>IDLE</li>
-            <li>Pycharm</li>
-          </ul> -->
-          <div>
-            <img src="https://i.stack.imgur.com/bz1qE.jpg" style="height: 10%; background:none; border:none; box-shadow:none;"/>
-          </div>
-        </section>
-        <section class="stretch">
+          <section class="stretch">
             <h3>What about other resources for GIS programming?</h3>
             <a href="https://www.osgeo.org/" target="_blank">
-              <img src="https://www.osgeo.org/wp-content/themes/roots/assets/img/logo-osgeo.svg" style="background:none; border:none; box-shadow:none;"/>
+              <img
+                src="https://www.osgeo.org/wp-content/themes/roots/assets/img/logo-osgeo.svg"
+                style="background:none; border:none; box-shadow:none;"
+              />
             </a>
           </section>
-        <section>
-          <h3>Exercises</h3>
-          <p><a href="./assets/downloads/gis_programming_demo.txt" download="simple-shell-demo" target="_blank">simple demo in IDLE </a></p>
-          <p><a href="./assets/downloads/ModelBuilderExample.zip" download="ModelBuilderExample.zip" target="_blank">getting started with model builder</a></p>
+          <section>
+            <h3>Exercises</h3>
+            <p>
+              <a
+                href="./assets/downloads/gis_programming_demo.txt"
+                download="simple-shell-demo"
+                target="_blank"
+                >simple demo in IDLE
+              </a>
+            </p>
+            <p>
+              <a
+                href="./assets/downloads/ModelBuilderExample.zip"
+                download="ModelBuilderExample.zip"
+                target="_blank"
+                >getting started with model builder</a
+              >
+            </p>
+          </section>
         </section>
-      </section>
 
-      <section>
         <section>
+          <section>
             <h1>Data Analysis with Python (and R)</h1>
-            <a href="https://www.anaconda.com/distribution/" target="_blank"> 
-              <img src="https://image.slidesharecdn.com/tdwiaccelerate-170405043601/95/python-for-data-science-with-anaconda-17-638.jpg?cb=1491367534"
-              style="background:none; border:none; box-shadow:none;"/>
+            <a href="https://www.anaconda.com/distribution/" target="_blank">
+              <img
+                src="https://image.slidesharecdn.com/tdwiaccelerate-170405043601/95/python-for-data-science-with-anaconda-17-638.jpg?cb=1491367534"
+                style="background:none; border:none; box-shadow:none;"
+              />
             </a>
-        </section>
-        <section>
+          </section>
+          <section>
             <h1><i>Data Analysis?</i></h1>
-            <p>Learn how to use popular data analysis libraries in <span style="color:darkgreen">Python such as Numpy and Pandas</span>.</p>
-            <p><strong>OR...</strong> Learn how to perform data analysis using <span style="color:darkturquoise">R and RStudio</span>.</p>
-        </section>
-        <section>
-          <h3>Building a (GIS) Data Science Pipeline</h3>
-          <img src="http://www.uvm.edu/~cbcafier/assets/pipeline.jpg" />
-        </section>
-        <section class="stretch">
-          <h3>Doing Data Analysis in Python with the ArcGIS Python API</h3>
-          <a href="https://notebooks.esri.com/user/5gNZMGNBqeoh9Z3AeYbfg3pn5/tree" target="_blank">
-            <img src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1508152648/Jupyter-notebook-Definitive-Guide_ul01sa.png"
-            style="background:none; border:none; box-shadow:none;"/>
-          </a>
-        </section>
-        <section class="stretch">
-            <h3>Doing Data Analysis in R</h3>
-            <a href="https://rmarkdown.rstudio.com/gallery.html" target="_blank">
-            <img src="https://s3-us-west-2.amazonaws.com/content.edupristine.com/images/blogs/r-program-3.jpg" 
-            style="width: 500px; background:none; border:none; box-shadow:none;"/>
+            <p>
+              Learn how to use popular data analysis libraries in
+              <span style="color:darkgreen"
+                >Python such as
+                <a href="https://numpy.org/devdocs/user/quickstart.html"></a
+                >Numpy and Pandas</span
+              >.
+            </p>
+            <p>
+              <strong>OR...</strong> Learn how to perform data analysis using
+              <span style="color:darkturquoise">R and RStudio</span>.
+            </p>
+          </section>
+          <section>
+            <h3>Building a (GIS) Data Science Pipeline</h3>
+            <img src="http://www.uvm.edu/~cbcafier/assets/pipeline.jpg" />
+          </section>
+          <section class="stretch">
+            <h3>Doing Data Analysis in Python with the ArcGIS Python API</h3>
+            <a
+              href="https://notebooks.esri.com/user/5gNZMGNBqeoh9Z3AeYbfg3pn5/tree"
+              target="_blank"
+            >
+              <img
+                src="http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1508152648/Jupyter-notebook-Definitive-Guide_ul01sa.png"
+                style="background:none; border:none; box-shadow:none;"
+              />
             </a>
-            <a href="https://www.rstudio.com/products/RStudio/#Desktop"><p>Check out the <strong>RStudio IDE</strong></p></a>
+          </section>
+          <section class="stretch">
+            <h3>Doing Data Analysis in R</h3>
+            <a
+              href="https://rmarkdown.rstudio.com/gallery.html"
+              target="_blank"
+            >
+              <img
+                src="https://s3-us-west-2.amazonaws.com/content.edupristine.com/images/blogs/r-program-3.jpg"
+                style="width: 500px; background:none; border:none; box-shadow:none;"
+              />
+            </a>
+            <a href="https://www.rstudio.com/products/RStudio/#Desktop"
+              ><p>Check out the <strong>RStudio IDE</strong></p></a
+            >
           </section>
 
           <section>
             <h3>Exercises</h3>
-            <a href="https://www.datacamp.com/" target="_blank"><p>Sign up for Data Camp</p></a>
-            <a href="https://automating-gis-processes.github.io/2016/Lesson1-Intro-Python-GIS.html" target="_blank">
-              <p>Check out all the different Python geospatial modules (scroll down)</p></a>
-              <p>Setup a local Jupyter Notebook session (follow along...)</p>
-            <a href="https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py" target="_blank">
-              <p>Make your first plot with matplotlib</p></a>
+            <a href="https://www.datacamp.com/" target="_blank"
+              ><p>Sign up for Data Camp</p></a
+            >
+            <a
+              href="https://automating-gis-processes.github.io/2016/Lesson1-Intro-Python-GIS.html"
+              target="_blank"
+            >
+              <p>
+                Check out all the different Python geospatial modules (scroll
+                down)
+              </p></a
+            >
+            <p>Setup a local Jupyter Notebook session (follow along...)</p>
+            <a
+              href="https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py"
+              target="_blank"
+            >
+              <p>Make your first plot with matplotlib</p></a
+            >
           </section>
-
-      </section>
-      <section>
+        </section>
         <section>
+          <section>
             <h1>(Spatial) Databases</h1>
-        </section>
-        <section class="stretch">
-          <h3>Review: What is a database?</h3>
-          <ul>
-            <li class="fragment">A <strong><i>database</i></strong> is an integrated set of data relating to a particular subject.</li>
-            <li class="fragment">A <strong><i>Database Management System (DBMS)</i></strong> is a software application designed to organize the storage and access of data.</li>
-            <li class="fragment">Databases form the basis of all GIS vector analysis.</li>
-          </ul>
-        </section>
-        <section class="stretch">
+          </section>
+          <section class="stretch">
             <h3>Review: What is a database?</h3>
-            <img src="./assets/img/features-attributes.png"
-            style="background:none; border:none; box-shadow:none;"
+            <ul>
+              <li class="fragment">
+                A <strong><i>database</i></strong> is an integrated set of data
+                relating to a particular subject.
+              </li>
+              <li class="fragment">
+                A <strong><i>Database Management System (DBMS)</i></strong> is a
+                software application designed to organize the storage and access
+                of data.
+              </li>
+              <li class="fragment">
+                Databases form the basis of all GIS vector analysis.
+              </li>
+            </ul>
+          </section>
+          <section class="stretch">
+            <h3>Review: What is a database?</h3>
+            <img
+              src="./assets/img/features-attributes.png"
+              style="background:none; border:none; box-shadow:none;"
             />
-        </section>
-        <section class="stretch">
+          </section>
+          <section class="stretch">
             <h3>Data are stored in tables</h3>
-            <img src="./assets/img/record-attributes.png"
-            style="background:none; border:none; box-shadow:none;"
+            <img
+              src="./assets/img/record-attributes.png"
+              style="background:none; border:none; box-shadow:none;"
             />
-        </section>
-        <section class="stretch">
+          </section>
+          <section class="stretch">
             <h3>Flat Database</h3>
-            <img src="./assets/img/flat-db.png"
-            style="background:none; border:none; box-shadow:none;"
+            <img
+              src="./assets/img/flat-db.png"
+              style="background:none; border:none; box-shadow:none;"
             />
             <ul>
               <li class="fragment">All information in one table.</li>
               <li class="fragment">Potentially much duplication of values.</li>
               <li class="fragment">e.g. an Excel spreadsheet.</li>
             </ul>
-        </section>
-        <section class="stretch">
+          </section>
+          <section class="stretch">
             <h3>Relational Database</h3>
-            <img src="./assets/img/rdbms-text.png"
-            style="background:none; border:none; box-shadow:none;"
+            <img
+              src="./assets/img/rdbms-text.png"
+              style="background:none; border:none; box-shadow:none;"
             />
-        </section>
+          </section>
 
-        <section class="stretch">
+          <section class="stretch">
             <h3>Joining Tables in RDBMS</h3>
-            <img src="./assets/img/join-tables.png"
-            style="background:none; border:none; box-shadow:none;"
+            <img
+              src="./assets/img/join-tables.png"
+              style="background:none; border:none; box-shadow:none;"
             />
-        </section>
+          </section>
 
-        <section class="stretch">
+          <section class="stretch">
             <h3>What about spatial data?</h3>
-            <img src="./assets/img/geometry-column.png"
-            style="width: 600px; background:none; border:none; box-shadow:none;"
+            <img
+              src="./assets/img/geometry-column.png"
+              style="width: 600px; background:none; border:none; box-shadow:none;"
             />
-        </section>
+          </section>
 
-        <section class="stretch">
+          <section class="stretch">
             <h3>PostgreSQL and PostGIS</h3>
             <a href="http://postgis.net/" target="_blank">
-              <img src="https://i.pinimg.com/originals/de/96/45/de9645c40359c1934f223f8f10f94d93.png"
-              style="width: 600px; background:none; border:none; box-shadow:none;"
+              <img
+                src="https://i.pinimg.com/originals/de/96/45/de9645c40359c1934f223f8f10f94d93.png"
+                style="width: 600px; background:none; border:none; box-shadow:none;"
               />
             </a>
-        </section>
+          </section>
 
-        <section class="stretch">
-            <h3>What about spatial data?</h3>
-            <a href="http://postgis.net/workshops/postgis-intro/geometries.html" target="_blank">
-              <img src="http://postgis.net/workshops/postgis-intro/_images/start01.png"
-              style="width: 600px; background:none; border:none; box-shadow:none;"
-              />
-            </a>
-            <p><a href="https://postgis.net/docs/reference.html#Geometry_Outputs" target="_blank">...and spatial data outputs?</a></p>
-        </section>
-
-        <section class="stretch">
-          <h3>An example scenario</h3>
-          <a href="https://data.detroitmi.gov/datasets/parcels-2/data" target="_blank">
-            <img src="./assets/img/property-praxis-data-model.png"
-            style="width: 600px; background:none; border:none; box-shadow:none;"
-            />
-          </a>
-      </section>
-
-        <section>
-          <h3>Exercises</h3>
-          <a href="https://www.w3schools.com/sql/" target="_blank"><p>Sart learning SQL</p></a>
-          <a href="http://sqlfiddle.com/" target="_blank"><p>Try SQLFiddle</p></a>
-        </section>
-      </section>
-
-      <section>
           <section class="stretch">
-              <h3>Web Development / GIS</h3>
-              <p>Learn the basics of web development. It's very important to do this before trying to jump into web GIS.</p>
-              <img src="https://www.10bestdesign.com/blog/content/images/2018/03/30.png"
-              style="width: 600px; background:none; border:none; box-shadow:none;"/>
-              <br>
-              <small>Image credit: 10 Best Design</small>
-                
-         </section>
+            <h3>What about spatial data?</h3>
+            <a
+              href="http://postgis.net/workshops/postgis-intro/geometries.html"
+              target="_blank"
+            >
+              <img
+                src="http://postgis.net/workshops/postgis-intro/_images/start01.png"
+                style="width: 600px; background:none; border:none; box-shadow:none;"
+              />
+            </a>
+            <p>
+              <a
+                href="https://postgis.net/docs/reference.html#Geometry_Outputs"
+                target="_blank"
+                >...and spatial data outputs?</a
+              >
+            </p>
+          </section>
+
+          <section class="stretch">
+            <h3>An example scenario</h3>
+            <a
+              href="https://data.detroitmi.gov/datasets/parcels-2/data"
+              target="_blank"
+            >
+              <img
+                src="./assets/img/property-praxis-data-model.png"
+                style="width: 600px; background:none; border:none; box-shadow:none;"
+              />
+            </a>
+          </section>
 
           <section>
-            <a href="https://www.geeksforgeeks.org/client-server-model/"><img src="./assets/img/client-server-model.png"/></a>
+            <h3>Exercises</h3>
+            <a href="https://www.w3schools.com/sql/" target="_blank"
+              ><p>Sart learning SQL</p></a
+            >
+            <a href="http://sqlfiddle.com/" target="_blank"
+              ><p>Try SQLFiddle</p></a
+            >
+          </section>
+        </section>
+
+        <section>
+          <section class="stretch">
+            <h3>Web Development / GIS</h3>
+            <p>
+              Learn the basics of web development. It's very important to do
+              this before trying to jump into web GIS.
+            </p>
+            <img
+              src="https://www.10bestdesign.com/blog/content/images/2018/03/30.png"
+              style="width: 600px; background:none; border:none; box-shadow:none;"
+            />
+            <br />
+            <small>Image credit: 10 Best Design</small>
+          </section>
+
+          <section>
+            <a href="https://www.geeksforgeeks.org/client-server-model/"
+              ><img src="./assets/img/client-server-model.png"
+            /></a>
           </section>
 
           <section>
             <h3>What is Web GIS?</h3>
-            <img src="./assets/img/web-gis.png" style="background:none; border:none; box-shadow:none;"/>
+            <img
+              src="./assets/img/web-gis.png"
+              style="background:none; border:none; box-shadow:none;"
+            />
           </section>
 
           <section>
             <h3>Web GIS Architecture</h3>
-            <img src="./assets/img/web-gis-architecture.png" style="background:none; border:none; box-shadow:none;"/>
+            <img
+              src="./assets/img/web-gis-architecture.png"
+              style="background:none; border:none; box-shadow:none;"
+            />
           </section>
 
           <section>
             <h3>Front End Dev</h3>
-            <a href="https://codeburst.io/the-2018-web-developer-roadmap-826b1b806e8d" target="_blank">
-              <img src="https://cdn-images-1.medium.com/max/2000/1*V7TMAzvhW7_cn9FbkKqOcQ.png" 
-              style="width: 450px; background:none; border:none; box-shadow:none;"/> 
+            <a
+              href="https://codeburst.io/the-2018-web-developer-roadmap-826b1b806e8d"
+              target="_blank"
+            >
+              <img
+                src="https://cdn-images-1.medium.com/max/2000/1*V7TMAzvhW7_cn9FbkKqOcQ.png"
+                style="width: 450px; background:none; border:none; box-shadow:none;"
+              />
             </a>
           </section>
           <section>
-              <h3>Back End Dev</h3>
-              <a href="https://codeburst.io/the-2018-web-developer-roadmap-826b1b806e8d" target="_blank">
-                <img src="https://cdn-images-1.medium.com/max/1000/1*0kf59M9bNuEIRNDaj54QvQ.png"
-                style="width: 450px; background:none; border:none; box-shadow:none;"/> 
-              </a>
-          </section>
-
-
-          <section class="stretch">
-          <h1>Putting It All Together</h1>
-          <img src="https://www.revenueriver.co/hs-fs/hubfs/fullstack.jpeg?width=792&name=fullstack.jpeg" style="width: 650px; background:none; border:none; box-shadow:none;" />
-          </section>
-
-          <section class="stretch">
-              <h3>An Example</h3>
-              <a href="https://sr-dev-39d30.firebaseapp.com/" target="_blank"><img src="./assets/img/sr-app.png"
-                style="width: 650px; background:none; border:none; box-shadow:none;"/></a>
+            <h3>Back End Dev</h3>
+            <a
+              href="https://codeburst.io/the-2018-web-developer-roadmap-826b1b806e8d"
+              target="_blank"
+            >
+              <img
+                src="https://cdn-images-1.medium.com/max/1000/1*0kf59M9bNuEIRNDaj54QvQ.png"
+                style="width: 450px; background:none; border:none; box-shadow:none;"
+              />
+            </a>
           </section>
 
           <section class="stretch">
-              <h3>GeoJSON and TopoJSON</h3>
-              <a href="http://geojson.io/#map=2/20.0/0.0" target="_blank">
-                <img src="./assets/img/geojson.png" 
-                style="width: 450px; background:none; border:none; box-shadow:none;"/> 
-              </a>
-              <a href="https://codepen.io/timhitchins/pen/OJVmgNL" target="_blank">
-                <img src="https://www.valuecoders.com/blog/wp-content/uploads/2018/02/codepen.png" 
-                style="width: 450px; background:none; border:none; box-shadow:none;"/> 
-              </a>
+            <h1>Putting It All Together</h1>
+            <img
+              src="https://www.revenueriver.co/hs-fs/hubfs/fullstack.jpeg?width=792&name=fullstack.jpeg"
+              style="width: 650px; background:none; border:none; box-shadow:none;"
+            />
           </section>
 
+          <section class="stretch">
+            <h3>An Example</h3>
+            <a href="https://sr-dev-39d30.firebaseapp.com/" target="_blank"
+              ><img
+                src="./assets/img/sr-app.png"
+                style="width: 650px; background:none; border:none; box-shadow:none;"
+            /></a>
+          </section>
+
+          <section class="stretch">
+            <h3>GeoJSON and TopoJSON</h3>
+            <a href="http://geojson.io/#map=2/20.0/0.0" target="_blank">
+              <img
+                src="./assets/img/geojson.png"
+                style="width: 450px; background:none; border:none; box-shadow:none;"
+              />
+            </a>
+            <a
+              href="https://codepen.io/timhitchins/pen/OJVmgNL"
+              target="_blank"
+            >
+              <img
+                src="https://www.valuecoders.com/blog/wp-content/uploads/2018/02/codepen.png"
+                style="width: 450px; background:none; border:none; box-shadow:none;"
+              />
+            </a>
+          </section>
 
           <section>
-              <h3>Exercises</h3>
-              <a href="http://javascript.info/" target="_blank"><p>Start learning JS</p></a>
-              <a href="https://www.w3schools.com/css/default.asp" target="_blank"><p>Start learning CSS</p></a>
-              <a href="https://www.w3schools.com/html/default.asp" target="_blank"><p>Start learning HTML</p></a>
-              <a href="https://leafletjs.com/examples.html" target="_blank"><p>Check out Leaflet.js</p></a>
+            <h3>Exercises</h3>
+            <a href="http://javascript.info/" target="_blank"
+              ><p>Start learning JS</p></a
+            >
+            <a href="https://www.w3schools.com/css/default.asp" target="_blank"
+              ><p>Start learning CSS</p></a
+            >
+            <a href="https://www.w3schools.com/html/default.asp" target="_blank"
+              ><p>Start learning HTML</p></a
+            >
+            <a href="https://leafletjs.com/examples.html" target="_blank"
+              ><p>Check out Leaflet.js</p></a
+            >
           </section>
-
         </section>
 
         <section class="stretch">
-            <h1>Thanks!</h1>
-            <img src="./assets/img/hitchins-transparent-logo.png" style="height: 100px; width: 100px; background:none; border:none; box-shadow:none; "/>
-            <p>Email: <a href="mailto:timothy.hitchins@pcc.edu">timothy.hitchins@pcc.edu</a></p>
-            <p>Github: <a href="https://github.com/timhitchins">timhitchins</a></p>
+          <h1>Thanks!</h1>
+          <img
+            src="./assets/img/hitchins-transparent-logo.png"
+            style="height: 100px; width: 100px; background:none; border:none; box-shadow:none; "
+          />
+          <p>
+            Email:
+            <a href="mailto:timothy.hitchins@pcc.edu"
+              >timothy.hitchins@pcc.edu</a
+            >
+          </p>
+          <p>
+            Github: <a href="https://github.com/timhitchins">timhitchins</a>
+          </p>
         </section>
+      </div>
+    </div>
 
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-  <script src="lib/js/head.min.js"></script>
-  <script src="js/reveal.js"></script>
+    <script>
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+      var role = getParameterByName("role");
+      role = role === "master" ? role : "client";
 
-  <script>
-    function getParameterByName(name, url) {
-      if (!url) url = window.location.href;
-      name = name.replace(/[\[\]]/g, '\\$&');
-      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-        results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-    var role = getParameterByName('role');
-    role = role === 'master' ? role : 'client';
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+        multiplex: {
+          secret: "15372975462974572482",
+          id: "b6cc78829077f9fe",
+          url: "https://reveal-js-multiplex-ccjbegmaii.now.sh"
+        },
 
-    // More info https://github.com/hakimel/reveal.js#configuration
-    Reveal.initialize({
-      history: true,
-      multiplex: {
-        secret: '15372975462974572482',
-        id: 'b6cc78829077f9fe',
-        url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh'
-      },
-
-      // More info https://github.com/hakimel/reveal.js#dependencies
-      dependencies: [
-        { src: 'assets/lib/socket.io.min.js', async: true },
-        { src: 'plugin/multiplex/' + role + '.js', async: true },
-        { src: 'plugin/markdown/marked.js' },
-        { src: 'plugin/markdown/markdown.js' },
-        { src: 'plugin/notes/notes.js', async: true },
-        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-      ]
-    });
-  </script>
-
-</body>
-
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: "assets/lib/socket.io.min.js", async: true },
+          { src: "plugin/multiplex/" + role + ".js", async: true },
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          {
+            src: "plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
 </html>
