@@ -235,9 +235,9 @@ DEMO5: EVERYTHING IS AN OBJECT
 >>> id(strg)
 1075848016
 >>> type(strg)
-<type ’str’>
+<type ï¿½strï¿½>
 >>> strg
-’A String of Words’
+ï¿½A String of Wordsï¿½
 -----------------------------------------------------------
 >>> # identity
 >>> x = y = [1,2,3]
